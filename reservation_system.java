@@ -15,24 +15,25 @@ class restaurant_reservation_system {
         int reservation_count = 1; //variable to track reservation number
 
         while (true) { //main system loop
-            String a = prompt(); //promt user to input
+            String selection = prompt(); //promt user to input and store value
 
             System.out.println(); //just for formatting
 
-            //main if statement to handle user input
-            if (a.equals("k")) { 
+            //main if statement to handle user input and decide which function to call
+            if (selection.equals("k")) { 
                 System.out.println("\nViewing reservations\n");
 
-                view_reservations(reservations);
+                view_reservations(reservations); //call view reservation function
                 
-                read_prompt(); //this function allows for easier reading
+                read_prompt(); //easier reading
                 
             }
 
-            else if (a.equals("l")) {
+            else if (selection.equals("l")) {
                 System.out.println("Making reservation\n");
-                ArrayList<String> new_reservation = make_reservation(reservation_count);
+                ArrayList<String> new_reservation = make_reservation(reservation_count); //create and return new reservation
                 
+                //add to array lists
                 reservations.add(new_reservation); 
                 all_reservations.add(new_reservation); 
                 reservation_count++; //Increment this to order reservations
@@ -42,19 +43,19 @@ class restaurant_reservation_system {
 
             }
 
-            else if (a.equals("m")) {
+            else if (selection.equals("m")) {
                 reservations = delete_rsv(reservations); //sets the reservation list to the edited list
                 read_prompt();
 
             }
 
-            else if (a.equals("n")) {
+            else if (selection.equals("n")) {
                 System.out.printf("%65s%n", "Report"); //formatting only
-                generate_report(all_reservations);
+                generate_report(all_reservations); //call generate report function
                 read_prompt();
             }
 
-            else if (a.equals("o")) {
+            else if (selection.equals("o")) {
                 System.out.println("Thank you!");
                 sc.close(); //closes the scanner
                 break; //Stops the program by breaking the main loop
